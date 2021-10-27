@@ -28,7 +28,7 @@ def in_google(row_g):
     row_g.append(time_now)
     gc = gspread.service_account(filename="credentials.json")
     sh = gc.open_by_key("1ITFuAVUZacSnFKIGqJqeSt5K3exNNWNir2SGIKUMj5c")
-    worksheet = sh.worksheet("Guk")
+    worksheet = sh.worksheet("Worksheet")
     worksheet.resize(1000)
     worksheet.append_row(row_g)
 
@@ -183,7 +183,7 @@ write_on_file("otus.txt", str(ref_token))
 
 import telebot
 
-bot = telebot.TeleBot("1840101517:AAH_mUOfGtrxHegR4g5vTAZ0vjC84tX5h6Y")
+bot = telebot.TeleBot("")
 
 
 @bot.message_handler(commands=['start'])
@@ -203,7 +203,7 @@ def start_message(message):
 @bot.message_handler(content_types=["text"])
 def repeat_all_messages(message):  # Название функции не играет никакой роли, в принципе
     print(str(message.chat.id))
-    goods_users = [1896710241, 1831535019, 471022696]
+    goods_users = []
     if not (int(message.from_user.id) in goods_users):
         bot.reply_to(message, "У вас нет доступа.")
         return False
